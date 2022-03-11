@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movies.data.MovieViewModel
 import com.example.movies.R
 
 

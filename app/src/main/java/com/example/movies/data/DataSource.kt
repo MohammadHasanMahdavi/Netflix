@@ -4,7 +4,7 @@ import com.example.movies.R
 import com.example.movies.data.models.Movie
 
 class DataSource {
-    companion object{
+
         fun createDataSet() : ArrayList<Movie>
         {
             val list = ArrayList<Movie>()
@@ -92,5 +92,5 @@ class DataSource {
 
             return list
         }
-    }
+
 }

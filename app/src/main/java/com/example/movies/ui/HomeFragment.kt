@@ -6,8 +6,8 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movies.data.MovieViewModel
 import com.example.movies.R
+import com.example.movies.data.models.Movie
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -16,16 +16,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var movieAdapter : MovieRecyclerAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
-        addDataSet()
+        model.value.movieList.observe(viewLifecycleOwner){
+            if (it!=null) {
+                initRecycler()
+                addDataSet(it)
+            }
+        }
 
     }
-    fun addDataSet(){
-
-        val data = model.value.movieList.value
-        if (data != null) {
-            movieAdapter.submitList(data)
-        }
+    private fun addDataSet(movieList : ArrayList<Movie>){
+        movieAdapter.submitList(movieList)
     }
     private fun initRecycler(){
         var recyclerView: RecyclerView? = view?.findViewById(R.id.movieRecycler)
